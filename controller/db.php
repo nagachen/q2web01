@@ -6,7 +6,7 @@
         protected $links;
 
         function __construct($table){
-            $this->dsn="mysql:host=localhost;charset=utf8;dbname=db03";
+            $this->dsn="mysql:host=localhost;charset=utf8;dbname=db01";
             $this->pdo=new PDO($this->dsn,'root','');
             $this->table=$table;
 
@@ -159,10 +159,6 @@
         }
     }
 
-    function dd($array){
-        echo "<pre>";
-        print_r($array);
-        echo "</pre>";
-    }
+ 
 
 
