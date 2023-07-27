@@ -1,7 +1,9 @@
 <?php
 session_start();
 
-include_once __DIR__ ."/controller/viewer.php";
+include_once __DIR__ ."/controller/Viewer.php";
+include_once __DIR__ ."/controller/User.php";
+
 function dd($array){
     echo "<pre>";
     print_r($array);
@@ -9,5 +11,8 @@ function dd($array){
 }
 
 $Viewer=new Viewer;
+$User=new User;
+
+
 
 ?>

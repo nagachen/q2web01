@@ -16,7 +16,7 @@
         function all(...$arg){
             $sql="select * from $this->table";
             $sql =$this->sql_all($sql,...$arg);
-            // dd($sql);
+           
             return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         }
         function find($arg){
@@ -28,6 +28,7 @@
         function count(...$arg){
             $sql="select count(*) from $this->table";
             $sql =$this->sql_all($sql,...$arg);
+           
             return $this->pdo->query($sql)->fetchColumn();
         }
 
@@ -83,7 +84,7 @@
                 if(!empty($arg[0])){
                     if(is_array($arg[0])){
                         $tmp=$this->a2s($arg[0]);
-                        $sql=$sql . ' where ' . join(',',$tmp);
+                        $sql=$sql . ' where ' . join(' && ',$tmp);
                     }else{
 
                         $sql=$sql . $arg[0];
