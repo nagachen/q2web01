@@ -19,3 +19,7 @@ function good(id,type,user)
 		}
 	})
 }
+
+function clean(){
+    $("input[type='text'],input[type=['password'],input[type='unmber'],input[type='radio']").val("")
+}

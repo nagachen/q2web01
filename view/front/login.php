@@ -45,8 +45,6 @@ function login(){
             }
         })
 }
-function clean(){
-    $("#acc,#pw").val("");
-}
+
 
 </script>
