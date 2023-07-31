@@ -33,4 +33,11 @@ class User extends DB
     {
         return $this->count($user);
     }
+
+    function backend(){
+        $data=[
+            'rows'=>$this->all(),
+        ];
+        $this->view("./view/backend/user.php",$data);
+    }
 }

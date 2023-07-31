@@ -1,4 +1,39 @@
-<h1>新增會員</h1>
+<fieldset>
+    <legend>
+        帳號管理
+    </legend>
+    <form action="./api/user_admin.php" method="post">
+        <table class='ct' style="width:50;margin:auto">
+        <tr>
+            <td>帳號</td>
+            <td>密碼</td>
+            <td>刪除</td>
+
+        </tr>
+        <?php
+            //此時已在function backend()內
+            foreach($rows as $idx=>$row){
+                ?>
+                <tr>
+                    <td><?=$row['acc'];?></td>
+                    <td><?=str_repeat("*",strlen($row['pw']));?></td>
+                    <td><input type='checkbox' name="del[]" value="<?=$row['id'];?>"></td>
+
+                </tr>
+                <?php
+
+            }
+
+        ?>
+    </table>
+    <div class='ct'>
+        <input type="submit" value="確定刪除">
+        <input type="reset" value="清空選取">
+    </div>
+    </form>
+</fieldset>
+
+h1>新增會員</h1>
 <div style="color:red">
         *請設定您要註冊的帳號及密碼(最長12個字元)
     </div>        
@@ -55,7 +90,8 @@
                     alert('帳號重覆');
                 }else{
                     $.post("./api/reg.php",info,()=>{
-                        alert('註冊完成，歡迎加入')
+                        // alert('註冊完成，歡迎加入')
+                        location.reload();
                     })
                 }
             })
