@@ -125,18 +125,23 @@
         }
 
         function paginate($num,$arg=null,$arg2=null){
-            $total= $this->count($arg,$arg2);
+            $total= $this->count($arg);
+            
             $pages=ceil($total/$num);
+            
             $now=$_GET['p']??'1';
-            $start=($pages-1)*$num;
+            $start=($now-1)*$num;
+            
             $this->links=[
                 'total'=>$total,
                 'pages'=>$pages,
                 'now'=>$now,
                 'start'=>$start,
                 'table'=>$this->table,
+                'num'=>$num,
             ];
             $rows=$this->all($arg,$arg2 . " limit $start,$num");
+            
             return $rows;
 
         }
@@ -147,7 +152,7 @@
                 $prev=$this->links['now']-1;
                 $html .= "<a href='?do=$this->table&p=$prev'>&lt;</a>";
             }
-            for($i=1;$i<$this->links['pages'];$i++){
+            for($i=1;$i<=$this->links['pages'];$i++){
                 $font_size=($i==$this->links['now'])?'24px':'16px';
                 $html .= "<a href='?do=$this->table&p=$i' style='$font_size'>$i</a>";
 

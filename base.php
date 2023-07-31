@@ -3,6 +3,7 @@ session_start();
 
 include_once __DIR__ ."/controller/Viewer.php";
 include_once __DIR__ ."/controller/User.php";
+include_once __DIR__ ."/controller/News.php";
 
 function dd($array){
     echo "<pre>";
@@ -15,6 +16,7 @@ function to ($url){
 }
 $Viewer=new Viewer;
 $User=new User;
+$News=new News;
 
 
 
