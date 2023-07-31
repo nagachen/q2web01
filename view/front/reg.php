@@ -30,3 +30,31 @@
         </tr>
     </table>
 </fieldset>
+
+<script>
+    function reg(){
+        let info={
+            acc:$('#acc').val(),
+            pw:$('#pw').val(),
+            pw2:$('#pw2').val(),
+            email:$('#email').val(),
+
+        }
+        console.log(info)
+        if(info.acc =='' || info.pw ==''|| info.pw2 ==''){
+            alert('不可空白');
+        }else if(info.pw != info.pw2){
+            alert('密碼錯誤');
+        }else{
+            $.post('./api/chk_acc.php',{acc:info.acc},(res)=>{
+                if(parseInt(res)!==0){
+                    alert('帳號重覆');
+                }else{
+                    $.post("./api/reg.php",info,()=>{
+                        alert('註冊完成，歡迎加入')
+                    })
+                }
+            })
+        }
+    }
+</script>
