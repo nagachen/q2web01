@@ -4,7 +4,8 @@
 
     foreach($posts as $post){
         echo "<div>";
-        echo "<a href=''>";
+        //  呼叫外部的javascript function getPost
+        echo "<a href='Javascript:getPost({$post['id']})'>";
         echo $post['title'];
         echo "</a>";
         echo "</div>";

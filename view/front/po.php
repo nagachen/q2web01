@@ -13,6 +13,7 @@
     <fieldset style="width:550px;">
         <legend>文章列表</legend>
         <div id="lists"></div>
+
         <div id="post"></div>
 
     </fieldset>
@@ -27,7 +28,17 @@
 
     function getList(type){
         $.get('./api/get_list.php',{type},(list)=>{
+            $('#post').html("");
             $("#lists").html(list);
         })
     }
+
+    function getPost(id){
+        $.get("./api/get_post.php",{id},(post)=>{
+            $("#lists").html("");
+        //   console.log(post);
+            $("#post").html(post)
+        })
+    }
+
 </script>
