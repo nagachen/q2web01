@@ -7,7 +7,7 @@
 			width:300px;
 			position:fixed;
 			z-index: 999;
-            top:10;
+            
 			overflow: auto;
 			padding: 15px;
 			border-radius: 10px;
@@ -45,7 +45,7 @@
     }
     ?>
     </table>
-    <div class='ct'><?=$News->links();?></div>
+    <div class='ct'><?=$News->links('pop');?></div>
 </fieldset>
 <script>
     $(".title,.content").hover(function(){

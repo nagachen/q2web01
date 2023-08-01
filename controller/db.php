@@ -146,20 +146,23 @@
 
         }
 
-        function links(){
+        function links($target=null){
+            if(is_null($target)){
+                $target=$this->table;
+            }
             $html='';
             if($this->links['now']-1 >=1){
                 $prev=$this->links['now']-1;
-                $html .= "<a href='?do=$this->table&p=$prev'>&lt;</a>";
+                $html .= "<a href='?do=$target&p=$prev'>&lt;</a>";
             }
             for($i=1;$i<=$this->links['pages'];$i++){
                 $font_size=($i==$this->links['now'])?'24px':'16px';
-                $html .= "<a href='?do=$this->table&p=$i' style='$font_size'>$i</a>";
+                $html .= "<a href='?do=$target&p=$i' style='$font_size'>$i</a>";
 
             }
             if($this->links['now']+1 <=$this->links['pages']){
                 $next=$this->links['now']+1;
-                $html .= "<a href='?do=$this->table&p=$next'>&gt;</a>";
+                $html .= "<a href='?do=$target&p=$next'>&gt;</a>";
             }
             return $html;
         }
