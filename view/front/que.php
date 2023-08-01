@@ -18,7 +18,7 @@
             <td><?=$row['text'];?></td>
             <td><?=$row['vote'];?></td>
             <td><?="<a href='?do=result&id={$row['id']}'>結果</a>";?></td>
-            <td><?=(isset($_SESSION['user']))?'我要投票':'請先登入';?></td>
+            <td><?=(isset($_SESSION['user']))?"<a href='?do=vote&id={$row['id']}'>我要投票</a>":'請先登入';?></td>
 
         </tr>
 
