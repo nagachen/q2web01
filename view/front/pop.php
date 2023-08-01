@@ -40,6 +40,8 @@
                 </div>
             </td>
             <td>
+                <span class="amount"><?=$row['goods'];?></span>個人說
+                <div class="good"></div>
             <?php
                 if(isset($_SESSION['user'])){
                   
@@ -61,5 +63,24 @@
         $(this).parent().find(".all").show()
     },function(){
         $(this).parent().find('.all').hide()
+    })
+
+    
+    $(".goods").on("click",function(){
+        let news,type;
+        news=$(this).data("id");
+        switch($(this).text()){
+            case "讚":
+                $(this).text("收回讚");
+                type=1;
+            break;
+            case "收回讚":
+                $(this).text("讚");
+                type=2;
+            break;
+        }
+        $.post("./api/goods.php",{news,type},(res)=>{
+            location.reload()
+        })
     })
 </script>
