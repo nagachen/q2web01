@@ -23,7 +23,10 @@
             <td>
                 <?php
                 if(isset($_SESSION['user'])){
-                    echo "<a href='#' class='goods'>讚</a>";
+                  
+                    echo "<a href='#' class='goods' data-id='{$row['id']}'>";
+                    echo $Log->showGoods($row['id']);
+                    echo "</a>";
                 }
                 ?>
             </td>
@@ -39,13 +42,20 @@
         $(this).parent().find(".short,.all").toggle();
     })
     $(".goods").on("click",function(){
+        let news,type;
+        news=$(this).data("id");
         switch($(this).text()){
             case "讚":
                 $(this).text("收回讚");
+                type=1;
             break;
             case "收回讚":
                 $(this).text("讚");
+                type=2;
             break;
         }
+        $.post("./api/goods.php",{news,type},(res)=>{
+            console.log(res);
+        })
     })
 </script>

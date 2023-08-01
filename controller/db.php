@@ -51,6 +51,14 @@
         function del($arg){
             $sql=" delete from $this->table ";
             $sql=$this->sql_one($sql,$arg);
+           
+            return $this->pdo->exec($sql);
+        }
+
+        function delMore(...$arg){
+            $sql=" delete from $this->table ";
+            $sql=$this->sql_all($sql,...$arg);
+           
             return $this->pdo->exec($sql);
         }
         function sum($col,...$arg){
